@@ -26,6 +26,7 @@ public class main {
         System.out.println("Hola soy Richard");
         System.out.println("Ya me salio creo a");
         System.out.println("Clonacion Ysaac Correa");
+        System.out.println("Si al parecer ya te salio Ysaac :v");
     }
     
 }
