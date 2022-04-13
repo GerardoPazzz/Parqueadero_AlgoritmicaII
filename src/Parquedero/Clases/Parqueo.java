@@ -13,5 +13,5 @@ import java.util.Date;
 public class Parqueo {
     private int id;
     private Date HoraDeEntrada;
-    
+    private Date HoraDeSalida
 }
