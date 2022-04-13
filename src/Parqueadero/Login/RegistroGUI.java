@@ -15,7 +15,7 @@ import javax.swing.*;
  */
 public class RegistroGUI extends javax.swing.JFrame {
 
-    ArrayList<Usuario> usuario;
+    ArrayList<Admin> usuario;
     String[] roles;
 
     /**
@@ -30,7 +30,6 @@ public class RegistroGUI extends javax.swing.JFrame {
         roles = new String[]{"Visitante", "Administrador"};
         manejoArrayList();
 
-        boxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(roles));
     }
 
     public void manejoArrayList() {
@@ -40,7 +39,7 @@ public class RegistroGUI extends javax.swing.JFrame {
             boolean finDeArchivo = false;
             while (!finDeArchivo) {
                 try {
-                    usuario.add((Usuario) archivoEntrada.readObject());
+                    usuario.add((Admin) archivoEntrada.readObject());
                 } catch (EOFException e) {
                     finDeArchivo = true;
                 } catch (Exception f) {
@@ -89,9 +88,8 @@ public class RegistroGUI extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         Usuario = new javax.swing.JLabel();
         Clave = new javax.swing.JLabel();
-        boxRoles = new javax.swing.JComboBox<>();
-        Clave1 = new javax.swing.JLabel();
         btnRegistro = new javax.swing.JLabel();
+        btnTerminos = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -164,12 +162,6 @@ public class RegistroGUI extends javax.swing.JFrame {
         Clave.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         Clave.setText("Clave:");
 
-        boxRoles.setFont(new java.awt.Font("Roboto Medium", 0, 11)); // NOI18N
-        boxRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        Clave1.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        Clave1.setText("Rol:");
-
         btnRegistro.setBackground(new java.awt.Color(238, 221, 211));
         btnRegistro.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -189,6 +181,14 @@ public class RegistroGUI extends javax.swing.JFrame {
             }
         });
 
+        btnTerminos.setFont(new java.awt.Font("Roboto Medium", 0, 11)); // NOI18N
+        btnTerminos.setText("Acepto términos y condiciones");
+        btnTerminos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTerminosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -200,19 +200,21 @@ public class RegistroGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Usuario)
-                            .addComponent(Clave)
-                            .addComponent(Clave1))
+                            .addComponent(Clave))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario)
                             .addComponent(txtClave)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boxRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)))
                 .addGap(65, 65, 65))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(btnTerminos)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,11 +231,9 @@ public class RegistroGUI extends javax.swing.JFrame {
                     .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Clave1)
-                    .addComponent(boxRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(btnTerminos)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -268,19 +268,20 @@ public class RegistroGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroMouseExited
 
     private void btnRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseClicked
-        if (txtUsuario.getText().isEmpty() || txtClave.getText().isEmpty()) {
+        if (txtUsuario.getText().isEmpty() || txtClave.getText().isEmpty() || !btnTerminos.isSelected()) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos !");
         } else {
             String nombre = txtUsuario.getText().trim();
             String clave = txtClave.getText().trim();
-            int indiceRol = boxRoles.getSelectedIndex();
-            String rol = roles[indiceRol];
-
-            Usuario usuario_nuevo = new Usuario(nombre, clave, rol);
+            Admin usuario_nuevo = new Admin(nombre, clave);
             usuario.add(usuario_nuevo);
             registrarUsuarios();
         }
     }//GEN-LAST:event_btnRegistroMouseClicked
+
+    private void btnTerminosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTerminosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,10 +321,9 @@ public class RegistroGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Clave;
-    private javax.swing.JLabel Clave1;
     private javax.swing.JLabel Usuario;
-    private javax.swing.JComboBox<String> boxRoles;
     private javax.swing.JLabel btnRegistro;
+    private javax.swing.JCheckBox btnTerminos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

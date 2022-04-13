@@ -9,16 +9,14 @@ import java.io.*;
  *
  * @author Pc
  */
-public class Usuario implements Serializable{
+public class Admin implements Serializable{
 
     private String nombre;
     private String clave;
-    private String rol;
 
-    public Usuario(String nombre, String clave, String rol) {
+    public Admin(String nombre, String clave) {
         this.nombre = nombre;
         this.clave = clave;
-        this.rol = rol;
     }
 
 
@@ -37,14 +35,5 @@ public class Usuario implements Serializable{
     public void setClave(String clave) {
         this.clave = clave;
     }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
 
 }
