@@ -34,21 +34,20 @@ public class LoginGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         PanelPrincipal = new javax.swing.JPanel();
         Encabezado = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Cuerpo = new javax.swing.JPanel();
-        iconUser = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtUsuario = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         txtPassword = new javax.swing.JPasswordField();
-        iconPassword = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,8 +59,6 @@ public class LoginGUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/licencia-de-conducir (1).png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,19 +80,19 @@ public class LoginGUI extends javax.swing.JFrame {
         EncabezadoLayout.setHorizontalGroup(
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EncabezadoLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         EncabezadoLayout.setVerticalGroup(
             EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EncabezadoLayout.createSequentialGroup()
                 .addGroup(EncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         PanelPrincipal.add(Encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 70));
@@ -103,13 +100,6 @@ public class LoginGUI extends javax.swing.JFrame {
         Cuerpo.setBackground(new java.awt.Color(202, 240, 248));
         Cuerpo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Cuerpo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        iconUser.setBackground(new java.awt.Color(0, 150, 199));
-        iconUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Parqueadero/Login/usuario.png"))); // NOI18N
-        iconUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        iconUser.setOpaque(true);
-        Cuerpo.add(iconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 40, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -146,13 +136,6 @@ public class LoginGUI extends javax.swing.JFrame {
         );
 
         Cuerpo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 219, -1));
-
-        iconPassword.setBackground(new java.awt.Color(0, 150, 199));
-        iconPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Parqueadero/Login/password.png"))); // NOI18N
-        iconPassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        iconPassword.setOpaque(true);
-        Cuerpo.add(iconPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 40, 40));
 
         btnIngresar.setBackground(new java.awt.Color(51, 153, 255));
         btnIngresar.setFont(new java.awt.Font("Roboto Medium", 0, 15)); // NOI18N
@@ -202,6 +185,20 @@ public class LoginGUI extends javax.swing.JFrame {
         );
 
         Cuerpo.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 400, 40));
+
+        jLabel1.setBackground(new java.awt.Color(0, 102, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Parqueadero/Login/usuario.png"))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(51, 255, 255), null));
+        jLabel1.setOpaque(true);
+        Cuerpo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 40, 40));
+
+        jLabel2.setBackground(new java.awt.Color(0, 102, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Parqueadero/Login/password.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(51, 255, 204), null));
+        jLabel2.setOpaque(true);
+        Cuerpo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 40, 40));
 
         PanelPrincipal.add(Cuerpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 400, 390));
 
@@ -286,11 +283,10 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JLabel btnIngresar;
     private javax.swing.JLabel btnRegistrar;
-    private javax.swing.JLabel iconPassword;
-    private javax.swing.JLabel iconUser;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
