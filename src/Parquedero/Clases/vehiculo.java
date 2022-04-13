@@ -1,17 +1,26 @@
 package Parquedero.Clases;
 
-public abstract class vehiculo extends Cliente{
-    protected String placa;
-    protected String tipodeVehiculo;
+public class vehiculo {
+    private String placa;
+    private String tipoVehiculo;
+    
+    public vehiculo(String placa,String tipoVehiculo){};
 
-    public vehiculo(){}
-    public vehiculo(String placa, String tipodeVehiculo){
+    public void setplaca(String placa) {
         this.placa = placa;
-        this.tipodeVehiculo = tipodeVehiculo;
     }
 
-    public abstract void setplaca(String p);
-    public abstract String getplaca();
-    public abstract void settipodeVehiculo(String t);
-    public abstract String gettipodeVehiculo();
-}   
+    public String getplaca() {
+        return placa;
+    }
+
+    public void gettipoVehiculo(String tipoVehiculo) {
+        this.tipoVehiculo = tipoVehiculo;
+    }
+
+    public String gettipoVehiculo() {
+        return tipoVehiculo;
+    }
+}
+
+
