@@ -1,10 +1,13 @@
 package Parquedero.Clases;
 
 public class vehiculo {
-    private String placa;
-    private String tipoVehiculo;
+    private String placa="F5U-597";
+    private String tipoVehiculo="Toyota";
     
-    public vehiculo(String placa,String tipoVehiculo){};
+    public vehiculo(String placa,String tipoVehiculo){
+        this.placa=placa;
+        this.tipoVehiculo=tipoVehiculo;
+    };
 
     public void setplaca(String placa) {
         this.placa = placa;
