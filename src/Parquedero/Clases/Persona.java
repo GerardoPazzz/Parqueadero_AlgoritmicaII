@@ -18,8 +18,8 @@ public abstract class Persona {
         this.apellido = apellido;
     }
      //Metodos abstractos -> por implementar
-    public abstract void setNombre();
+    public abstract void setNombre(String n);
     public abstract String getNombre();
-    public abstract void setApellido();
+    public abstract void setApellido(String a);
     public abstract String getApellido();
 }
