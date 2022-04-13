@@ -74,7 +74,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Roboto Black", 3, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Parqueadero - Login");
+        jLabel3.setText("Parqueadero Login");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Parqueadero/Login/licencia-de-conducir (1).png"))); // NOI18N
 
