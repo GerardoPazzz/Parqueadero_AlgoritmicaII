@@ -17,7 +17,7 @@ public class vehiculo {
         return placa;
     }
 
-    public void gettipoVehiculo(String tipoVehiculo) {
+    public void settipoVehiculo(String tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
     }
 
