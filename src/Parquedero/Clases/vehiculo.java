@@ -10,8 +10,8 @@ public abstract class vehiculo extends Cliente{
         this.tipodeVehiculo = tipodeVehiculo;
     }
 
-    public abstract void setplaca();
+    public abstract void setplaca(String p);
     public abstract String getplaca();
-    public abstract void settipodeVehiculo();
+    public abstract void settipodeVehiculo(String t);
     public abstract String gettipodeVehiculo();
 }   
