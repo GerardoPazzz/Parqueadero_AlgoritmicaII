@@ -9,7 +9,7 @@ package Parquedero.Clases;
  * @author Isaac
  */
 public class Cliente extends Persona{
-    //public Vehiculo movil;
+    public vehiculo Vehiculo;
     
     public Cliente(){
         super();
@@ -18,10 +18,12 @@ public class Cliente extends Persona{
         super(nombre, apellido);
     }
     
-    /*
-       setMovil 
-       getMovil
-    */
+    
+    public void setvehiculo(String Vehiculo){}
+
+    public void getvehiculo(){}
+
+    
     @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
