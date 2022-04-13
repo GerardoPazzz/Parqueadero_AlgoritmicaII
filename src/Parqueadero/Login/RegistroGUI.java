@@ -27,7 +27,6 @@ public class RegistroGUI extends javax.swing.JFrame {
         TextPrompt placeholder_usuario = new TextPrompt("Ingresar nombre", txtUsuario);
         TextPrompt placeholder_clave = new TextPrompt("Ingrese clave", txtClave);
         usuario = new ArrayList<>();
-        roles = new String[]{"Visitante", "Administrador"};
         manejoArrayList();
 
     }
