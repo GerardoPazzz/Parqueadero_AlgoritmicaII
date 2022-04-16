@@ -5,6 +5,9 @@
 package Parqueadero.Login;
 
 import java.awt.*;
+import java.io.*;
+import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,13 +18,38 @@ public class LoginGUI extends javax.swing.JFrame {
     /**
      * Creates new form LoginGUI
      */
+    ArrayList<Admin> usuario;
+
     public LoginGUI() {
+        manejoArrayList();
         initComponents();
         this.setLocationRelativeTo(null);
 
-//Text Prompt es para aparezcan los PlaceHolder
-        TextPrompt text_usuario = new TextPrompt("Ingrese usuario", txtUsuario);
-        TextPrompt text_password = new TextPrompt("Ingrese contraseña", txtPassword);
+
+        //Text Prompt es para aparezcan los PlaceHolder
+        TextPrompt text_usuario = new TextPrompt("Ingrese usuario", this.txtUser);
+        TextPrompt text_password = new TextPrompt("Ingrese contraseña", this.txtPassword);
+    }
+
+    public void manejoArrayList() {
+        try {
+            FileInputStream archivo = new FileInputStream("Usuarios.dat");
+            ObjectInputStream archivoEntrada = new ObjectInputStream(archivo);
+            boolean finDeArchivo = false;
+            while (!finDeArchivo) {
+                try {
+                    usuario.add((Admin) archivoEntrada.readObject());
+                } catch (EOFException e) {
+                    finDeArchivo = true;
+                } catch (IOException f) {
+                    JOptionPane.showMessageDialog(null, f.getMessage());
+                }
+            }
+            archivoEntrada.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
     }
 
     /**
@@ -40,7 +68,7 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Cuerpo = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtUsuario = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         txtPassword = new javax.swing.JPasswordField();
         btnIngresar = new javax.swing.JLabel();
@@ -103,9 +131,9 @@ public class LoginGUI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
+                txtUserActionPerformed(evt);
             }
         });
 
@@ -113,11 +141,11 @@ public class LoginGUI extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         Cuerpo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 219, 40));
@@ -145,6 +173,9 @@ public class LoginGUI extends javax.swing.JFrame {
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIngresar.setOpaque(true);
         btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIngresarMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnIngresarMouseExited(evt);
             }
@@ -216,9 +247,9 @@ public class LoginGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
+    }//GEN-LAST:event_txtUserActionPerformed
 
     private void btnIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseEntered
         btnIngresar.setBackground(new Color(173, 232, 244));
@@ -240,6 +271,20 @@ public class LoginGUI extends javax.swing.JFrame {
         RegistroGUI registro = new RegistroGUI();
         registro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarMouseClicked
+
+    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
+        for (Admin admin : usuario) {
+            if (admin.getNombre().equals(this.txtUser)) {
+                if (admin.getClave().equals(this.txtPassword)) {
+                    JOptionPane.showMessageDialog(null, "Usuario encontrado :D");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Clave incorrecta");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario incorrecto !");
+            }
+        }
+    }//GEN-LAST:event_btnIngresarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -292,6 +337,6 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

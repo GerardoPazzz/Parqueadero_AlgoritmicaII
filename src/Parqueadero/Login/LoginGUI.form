@@ -162,19 +162,19 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtUsuario" alignment="0" pref="219" max="32767" attributes="0"/>
+                      <Component id="txtUser" alignment="0" pref="219" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtUsuario" alignment="0" pref="40" max="32767" attributes="0"/>
+                      <Component id="txtUser" alignment="0" pref="40" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="txtUsuario">
+                <Component class="javax.swing.JTextField" name="txtUser">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsuarioActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -229,6 +229,7 @@
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnIngresarMouseClicked"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnIngresarMouseExited"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnIngresarMouseEntered"/>
               </Events>
