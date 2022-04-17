@@ -274,8 +274,8 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
         for (Admin admin : usuario) {
-            if (admin.getNombre().equals(this.txtUser)) {
-                if (admin.getClave().equals(this.txtPassword)) {
+            if (admin.getNombre().equals(this.txtUser.getText())) {
+                if (admin.getClave().equals(this.txtPassword.getText())) {
                     JOptionPane.showMessageDialog(null, "Usuario encontrado :D");
                 } else {
                     JOptionPane.showMessageDialog(null, "Clave incorrecta");
