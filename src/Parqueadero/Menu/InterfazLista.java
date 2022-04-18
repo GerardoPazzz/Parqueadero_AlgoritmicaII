@@ -5,6 +5,7 @@
 package Parqueadero.Menu;
 
 import Parquedero.Clases.ArrayList_Parqueo;
+import Parquedero.Clases.Parqueo;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,17 +19,21 @@ public class InterfazLista extends javax.swing.JFrame {
      */
     public InterfazLista() {
         initComponents();
-        String [] titulos = new String [] {"ID","Nombre","Apellido","Dni","Placa","T. Vehiculo","H. Entrada","H. Salida"};
+        String [] titulos = new String [] {"ID","Nombre","Apellido","Dni"};//,"Placa","T. Vehiculo","H. Entrada","H. Salida"};
         modelo = new DefaultTableModel(null, titulos);
         jTable1.setModel(modelo);
+        llenarTabla();
     }
     
-    /*
+    
     void llenarTabla(){
         for (Parqueo listacliente : ArrayList_Parqueo.listaclientes) {
-            
+            modelo.addRow(new Object[]{
+                listacliente.getId(), listacliente.getPropietario().getNombre(), listacliente.getPropietario().getApellido(), listacliente.getPropietario().getDni() 
+                //listacliente.getplaca(), listacliente.gettipoVehiculo() //listacliente.getHoraDeEntrada(), listacliente.getHoraDeSalida()
+            });
         }
-    }*/
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
