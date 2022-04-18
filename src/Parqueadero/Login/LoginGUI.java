@@ -4,6 +4,7 @@
  */
 package Parqueadero.Login;
 
+import Parqueadero.Menu.*;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
@@ -273,16 +274,26 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-        for (Admin admin : usuario) {
-            if (admin.getNombre()==txtUser.getText()){
-                if (admin.getClave()==txtPassword.getText()) {
-                    JOptionPane.showMessageDialog(null, "Usuario encontrado :D");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Clave incorrecta");
-                }
+        char[] pass;
+        String password;
+        manejoArrayList();
+
+        int i = 0;
+        while (i < usuario.size() && !usuario.get(i).getNombre().equals(txtUser.getText())) {
+            i++;
+        }
+        if (i < usuario.size()) {
+            pass = txtPassword.getPassword();
+            password = new String(pass);
+            if (usuario.get(i).getClave().equals(password)) {
+                Menú menu = new Menú();
+                menu.setVisible(true);
+                this.dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Usuario incorrecto !");
+                JOptionPane.showMessageDialog(null, "Clave incorrecta !");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario incorrecto, intente nuevamente");
         }
     }//GEN-LAST:event_btnIngresarMouseClicked
 

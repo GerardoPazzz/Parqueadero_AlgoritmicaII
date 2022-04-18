@@ -89,6 +89,7 @@ public class RegistroGUI extends javax.swing.JFrame {
         Clave = new javax.swing.JLabel();
         btnRegistro = new javax.swing.JLabel();
         btnTerminos = new javax.swing.JCheckBox();
+        btnRegresar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,15 +189,39 @@ public class RegistroGUI extends javax.swing.JFrame {
             }
         });
 
+        btnRegresar.setText("Salir");
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.setOpaque(true);
+        btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseEntered(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(btnTerminos))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Usuario)
                             .addComponent(Clave))
@@ -205,20 +230,18 @@ public class RegistroGUI extends javax.swing.JFrame {
                             .addComponent(txtUsuario)
                             .addComponent(txtClave)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)))
-                .addGap(65, 65, 65))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(btnTerminos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(btnRegresar)
+                        .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(22, 22, 22)
+                .addComponent(btnRegresar)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Usuario))
@@ -273,14 +296,34 @@ public class RegistroGUI extends javax.swing.JFrame {
             String nombre = txtUsuario.getText().trim();
             String clave = txtClave.getText().trim();
             Admin usuario_nuevo = new Admin(nombre, clave);
-            usuario.add(usuario_nuevo);
-            registrarUsuarios();
+            int i = 0;
+            while (i < usuario.size() && !usuario.get(i).getNombre().equals(nombre)) {
+                i++;
+            }
+            if (i < usuario.size()) {
+                JOptionPane.showMessageDialog(null, "Usuario ya ocupado !");
+            } else {
+                usuario.add(usuario_nuevo);
+                registrarUsuarios();
+            }
         }
     }//GEN-LAST:event_btnRegistroMouseClicked
 
     private void btnTerminosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTerminosActionPerformed
+
+    private void btnRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseEntered
+        btnRegresar.setForeground(Color.red);
+    }//GEN-LAST:event_btnRegresarMouseEntered
+
+    private void btnRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseExited
+        btnRegresar.setForeground(Color.black);
+    }//GEN-LAST:event_btnRegresarMouseExited
+
+    private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -322,6 +365,7 @@ public class RegistroGUI extends javax.swing.JFrame {
     private javax.swing.JLabel Clave;
     private javax.swing.JLabel Usuario;
     private javax.swing.JLabel btnRegistro;
+    private javax.swing.JLabel btnRegresar;
     private javax.swing.JCheckBox btnTerminos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
