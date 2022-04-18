@@ -110,7 +110,7 @@ public class Interfaz_ID_para_Editar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        //if(campoID.getText().isEmpty())
+        if(campoID.getText().isEmpty())
         //Interfaz_EditarCliente nuevo=new Interfaz_EditarCliente();
         //nuevo.setVisible(true);
         dispose();

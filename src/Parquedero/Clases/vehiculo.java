@@ -1,6 +1,7 @@
 package Parquedero.Clases;
+import java.io.Serializable;
 
-public class vehiculo {
+public class vehiculo implements Serializable{
     private String placa="F5U-597";
     private String tipoVehiculo="Toyota";
     

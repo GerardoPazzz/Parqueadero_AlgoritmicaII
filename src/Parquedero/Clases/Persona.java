@@ -3,12 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Parquedero.Clases;
+import java.io.Serializable;
 
 /**
  *
  * @author Isaac
  */
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     protected String nombre; 
     protected String apellido;
 
