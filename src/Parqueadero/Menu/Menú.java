@@ -211,6 +211,9 @@ public class Menú extends javax.swing.JFrame {
     
     private void BotonArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonArchivoActionPerformed
   // este debe crear el archivo con la lista de clientes 
+  InterfazLista vent0 = new InterfazLista();
+  vent0.setVisible(true);
+  dispose();
     }//GEN-LAST:event_BotonArchivoActionPerformed
 
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
