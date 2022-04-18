@@ -21,10 +21,10 @@ public class LoginGUI extends javax.swing.JFrame {
     ArrayList<Admin> usuario;
 
     public LoginGUI() {
+        usuario = new ArrayList<>();
         manejoArrayList();
         initComponents();
         this.setLocationRelativeTo(null);
-
 
         //Text Prompt es para aparezcan los PlaceHolder
         TextPrompt text_usuario = new TextPrompt("Ingrese usuario", this.txtUser);
@@ -274,8 +274,8 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
         for (Admin admin : usuario) {
-            if (admin.getNombre().equals(this.txtUser.getText())) {
-                if (admin.getClave().equals(this.txtPassword.getText())) {
+            if (admin.getNombre()==txtUser.getText()){
+                if (admin.getClave()==txtPassword.getText()) {
                     JOptionPane.showMessageDialog(null, "Usuario encontrado :D");
                 } else {
                     JOptionPane.showMessageDialog(null, "Clave incorrecta");
