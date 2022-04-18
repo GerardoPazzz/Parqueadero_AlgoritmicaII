@@ -34,6 +34,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
     public void manejoArrayList() {
         try {
+            usuario.clear();
             FileInputStream archivo = new FileInputStream("Usuarios.dat");
             ObjectInputStream archivoEntrada = new ObjectInputStream(archivo);
             boolean finDeArchivo = false;
