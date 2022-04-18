@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package parqueaderoalgoritmicaii;
-import Parqueadero.Menu.*;
+
+import Parqueadero.Login.*;
+
 /**
  *
  * @author Pc
@@ -14,7 +16,8 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new Menú().setVisible(true);
+        LoginGUI login = new LoginGUI();
+        login.setVisible(true);
     }
     
 }
