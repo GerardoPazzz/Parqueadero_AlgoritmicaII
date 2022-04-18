@@ -19,7 +19,9 @@ public class FondoPanel extends JPanel{
         public FondoPanel() {
            
         }
-
+    public FondoPanel(String URL) {
+           this.URL=URL;
+        }
     public void setParURL(String parURL) {
         this.URL = parURL;
     }

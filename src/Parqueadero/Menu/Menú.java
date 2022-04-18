@@ -4,6 +4,7 @@
  */
 package Parqueadero.Menu;
 
+import Parquedero.Clases.AjustarImagen;
 import Parquedero.Clases.FondoPanel;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,11 +18,16 @@ import javax.swing.JPanel;
 public class Menú extends javax.swing.JFrame {
 
    FondoPanel fondo= new FondoPanel();
-   
+    AjustarImagen escalar= new AjustarImagen();
     
     public Menú() {
         this.setContentPane(fondo);
         initComponents();
+        escalar.EscalarLabel(LabelAñadir, "/Parqueadero/imagenes/icono_añadir_vehiculo.jpg");
+        escalar.EscalarLabel(LabelBuscar, "/Parqueadero/imagenes/icono_lupa2.jpg");
+        escalar.EscalarLabel(LabelEditar, "/Parqueadero/imagenes/icono_editar.png");
+        escalar.EscalarLabel(LabelLista, "/Parqueadero/imagenes/icono_registro.png");
+        escalar.EscalarLabel(LabelRetirar, "/Parqueadero/imagenes/icono_carro_saliendo.jpg");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -36,17 +42,17 @@ public class Menú extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new FondoPanel();
-        jLabel1 = new javax.swing.JLabel();
+        LabelEditar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        LabelAñadir = new javax.swing.JLabel();
+        LabelBuscar = new javax.swing.JLabel();
         BotonIngresar = new javax.swing.JButton();
         BotonEditar = new javax.swing.JButton();
         BotonArchivo = new javax.swing.JButton();
         BotonBuscar = new javax.swing.JButton();
         BotonRetirar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        LabelRetirar = new javax.swing.JLabel();
+        LabelLista = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -56,30 +62,32 @@ public class Menú extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(0, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Editar");
+        LabelEditar.setBackground(new java.awt.Color(0, 255, 255));
+        LabelEditar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LabelEditar.setForeground(new java.awt.Color(255, 51, 51));
+        LabelEditar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(LabelEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 90, 70));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Menú");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 128, 49));
 
-        jLabel5.setBackground(new java.awt.Color(0, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Añadir Cliente");
+        LabelAñadir.setBackground(new java.awt.Color(0, 255, 255));
+        LabelAñadir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LabelAñadir.setForeground(new java.awt.Color(255, 51, 51));
+        LabelAñadir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(LabelAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 90, 70));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Buscar");
+        LabelBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LabelBuscar.setForeground(new java.awt.Color(255, 0, 0));
+        LabelBuscar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel1.add(LabelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 90, 70));
 
-        BotonIngresar.setBackground(new java.awt.Color(102, 255, 102));
+        BotonIngresar.setBackground(new java.awt.Color(204, 255, 204));
         BotonIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BotonIngresar.setForeground(new java.awt.Color(255, 0, 0));
         BotonIngresar.setText("Ingresar Vehiculo");
@@ -89,6 +97,7 @@ public class Menú extends javax.swing.JFrame {
                 BotonIngresarActionPerformed(evt);
             }
         });
+        jPanel1.add(BotonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 143, 48));
 
         BotonEditar.setBackground(new java.awt.Color(204, 204, 204));
         BotonEditar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -100,8 +109,9 @@ public class Menú extends javax.swing.JFrame {
                 BotonEditarActionPerformed(evt);
             }
         });
+        jPanel1.add(BotonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 143, 48));
 
-        BotonArchivo.setBackground(new java.awt.Color(0, 255, 255));
+        BotonArchivo.setBackground(new java.awt.Color(153, 255, 255));
         BotonArchivo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BotonArchivo.setForeground(new java.awt.Color(255, 0, 0));
         BotonArchivo.setText("Lista de Clientes");
@@ -111,8 +121,9 @@ public class Menú extends javax.swing.JFrame {
                 BotonArchivoActionPerformed(evt);
             }
         });
+        jPanel1.add(BotonArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 143, 48));
 
-        BotonBuscar.setBackground(new java.awt.Color(255, 255, 0));
+        BotonBuscar.setBackground(new java.awt.Color(255, 255, 204));
         BotonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BotonBuscar.setForeground(new java.awt.Color(255, 0, 51));
         BotonBuscar.setText("Buscar");
@@ -122,75 +133,15 @@ public class Menú extends javax.swing.JFrame {
                 BotonBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(BotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 143, 48));
 
+        BotonRetirar.setBackground(new java.awt.Color(204, 204, 255));
         BotonRetirar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BotonRetirar.setForeground(new java.awt.Color(255, 0, 0));
         BotonRetirar.setText("Retirar Vehiculo");
-
-        jLabel6.setText("Retirar Vehiculo");
-
-        jLabel7.setText("Lista");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BotonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BotonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addGap(37, 37, 37))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BotonRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(BotonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(283, 283, 283)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(BotonArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
-        );
+        jPanel1.add(BotonRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 143, 48));
+        jPanel1.add(LabelRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 90, 70));
+        jPanel1.add(LabelLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 90, 70));
 
         jMenu1.setText("Archivo");
 
@@ -227,11 +178,11 @@ public class Menú extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
         );
 
         pack();
@@ -239,9 +190,6 @@ public class Menú extends javax.swing.JFrame {
 
     private void BotonArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonArchivoActionPerformed
   // este debe crear el archivo con la lista de clientes 
-    InterfazLista vent0 = new InterfazLista();
-    vent0.setVisible(true);
-    dispose();
     }//GEN-LAST:event_BotonArchivoActionPerformed
 
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
@@ -317,12 +265,12 @@ public class Menú extends javax.swing.JFrame {
     private javax.swing.JButton BotonEditar;
     private javax.swing.JButton BotonIngresar;
     private javax.swing.JButton BotonRetirar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel LabelAñadir;
+    private javax.swing.JLabel LabelBuscar;
+    private javax.swing.JLabel LabelEditar;
+    private javax.swing.JLabel LabelLista;
+    private javax.swing.JLabel LabelRetirar;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
