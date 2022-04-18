@@ -132,7 +132,7 @@ public class Interfaz_Cliente_Vehiculo extends javax.swing.JFrame {
     private void botonGuardarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarVehiculoActionPerformed
         if(!(campoPlaca.getText().isEmpty()||campoTipo.getText().isEmpty())){
             vehiculo vehiculoactual=new vehiculo(campoPlaca.getText(),campoTipo.getText());
-            Interfaz_AñadirCliente.clienteactual.setVehiculo(vehiculoactual);
+            ArrayList_Parqueo.clienteactual.setVehiculo(vehiculoactual);
             dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Rellene todos los campos!");

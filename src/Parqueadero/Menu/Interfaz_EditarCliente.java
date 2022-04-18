@@ -14,16 +14,14 @@ import javax.swing.JOptionPane;
  */
 public class Interfaz_EditarCliente extends javax.swing.JFrame {
     
-    ArrayList<Parqueo> listaclientes;   //Almacena la lista de clientes hasta ahora
-    public static Cliente clienteactual; //Almacena los datos del cliente del registro actual
-    public static int id;
     FondoPanel fondo2=new FondoPanel();
     public Interfaz_EditarCliente() {
         fondo2.setParURL("/Parqueadero/imagenes/EditarCliente.jpg");
         this.setContentPane(fondo2);
         initComponents();
-        listaclientes=new ArrayList<>();
-        leerListaClientes();
+        campoNombre.setText(ArrayList_Parqueo.clienteactual.getNombre());
+        campoApellidos.setText(ArrayList_Parqueo.clienteactual.getApellido());
+        campoDNI.setText(Long.toString(ArrayList_Parqueo.clienteactual.getDni()));
     }
 
     /**
@@ -146,20 +144,10 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void leerListaClientes(){
-        try {
-            FileInputStream fichero=new FileInputStream("clientes.dat");
-            ObjectInputStream lectura_fichero=new ObjectInputStream(fichero);
-            listaclientes=(ArrayList<Parqueo>)lectura_fichero.readObject();  
-            lectura_fichero.close();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-    }
-    
+  
     public void escribirListaClientes(){
         try {
+            ArrayList<Parqueo> listaclientes=ArrayList_Parqueo.listaclientes;
             FileOutputStream fichero=new FileOutputStream("clientes.dat");
             ObjectOutputStream escritura_fichero=new ObjectOutputStream(fichero);
             escritura_fichero.writeObject(listaclientes);
@@ -176,12 +164,30 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_botonEditarVehiculoActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-        new Menú().setVisible(true);
+        new Interfaz_ID_para_Editar().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonRegresarActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        // TODO add your handling code here:
+        if(!(campoNombre.getText().isEmpty()||campoApellidos.getText().isEmpty()||campoDNI.getText().isEmpty())){
+            if(!(ArrayList_Parqueo.clienteactual.Vehiculo==null))
+                try{
+                ArrayList_Parqueo.clienteactual.setNombre(campoNombre.getText());
+                ArrayList_Parqueo.clienteactual.setApellido(campoApellidos.getText());
+                ArrayList_Parqueo.clienteactual.setDni(Integer.parseInt(campoDNI.getText()));
+                ArrayList_Parqueo.Nuevo_Cliente_Parqueo(ArrayList_Parqueo.clienteactual);
+                escribirListaClientes();
+                new Menú().setVisible(true);
+                dispose();
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null, "Ingrese un Dni valido!");
+                }
+            else{
+                JOptionPane.showMessageDialog(null, "Ingrese la información del vehiculo!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos!");
+        }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     /**

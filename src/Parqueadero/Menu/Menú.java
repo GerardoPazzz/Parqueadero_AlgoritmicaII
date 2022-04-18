@@ -4,10 +4,14 @@
  */
 package Parqueadero.Menu;
 
-import Parquedero.Clases.AjustarImagen;
-import Parquedero.Clases.FondoPanel;
+import Parquedero.Clases.*;
+import java.io.*;
+import javax.swing.JOptionPane;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -30,6 +34,7 @@ public class Menú extends javax.swing.JFrame {
         escalar.EscalarLabel(LabelRetirar, "/Parqueadero/imagenes/icono_carro_saliendo.jpg");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        leerListaClientes();
     }
 
     /**
@@ -139,6 +144,11 @@ public class Menú extends javax.swing.JFrame {
         BotonRetirar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BotonRetirar.setForeground(new java.awt.Color(255, 0, 0));
         BotonRetirar.setText("Retirar Vehiculo");
+        BotonRetirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRetirarActionPerformed(evt);
+            }
+        });
         jPanel1.add(BotonRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 143, 48));
         jPanel1.add(LabelRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 90, 70));
         jPanel1.add(LabelLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 90, 70));
@@ -188,6 +198,17 @@ public class Menú extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void leerListaClientes(){
+       try {
+           FileInputStream fichero=new FileInputStream("clientes.dat");
+           ObjectInputStream lectura_fichero=new ObjectInputStream(fichero);
+           ArrayList_Parqueo.listaclientes=(ArrayList<Parqueo>)lectura_fichero.readObject();
+           lectura_fichero.close();
+       } catch (Exception ex) {
+           JOptionPane.showMessageDialog(null, ex.getMessage());
+       }
+    }
+    
     private void BotonArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonArchivoActionPerformed
   // este debe crear el archivo con la lista de clientes 
     }//GEN-LAST:event_BotonArchivoActionPerformed
@@ -221,6 +242,12 @@ public class Menú extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void BotonRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRetirarActionPerformed
+        Interfaz_Retirar_Vehiculo vent2= new Interfaz_Retirar_Vehiculo();
+        vent2.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BotonRetirarActionPerformed
 
     /**
      * @param args the command line arguments

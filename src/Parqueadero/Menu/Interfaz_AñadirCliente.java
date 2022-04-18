@@ -15,18 +15,13 @@ import javax.swing.JOptionPane;
  * @author Axel
  */
 public class Interfaz_AñadirCliente extends javax.swing.JFrame {
-
-    ArrayList<Parqueo> listaclientes;   //Almacena la lista de clientes hasta ahora
-    public static Cliente clienteactual; //Almacena los datos del cliente del registro actual
+    
     FondoPanel panel3= new FondoPanel();
     public Interfaz_AñadirCliente() {
         panel3.setParURL("/Parqueadero/imagenes/siluetas.jpg");
         setContentPane(panel3);
         setLocationRelativeTo(null);
         initComponents();
-        clienteactual=new Cliente();
-        listaclientes=new ArrayList<>();
-        leerListaClientes();
     }
 
     /**
@@ -144,19 +139,9 @@ public class Interfaz_AñadirCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void leerListaClientes(){
-        try {
-            FileInputStream fichero=new FileInputStream("clientes.dat");
-            ObjectInputStream lectura_fichero=new ObjectInputStream(fichero);
-            listaclientes=(ArrayList<Parqueo>)lectura_fichero.readObject();  
-            lectura_fichero.close();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-    }
-    
     public void escribirListaClientes(){
         try {
+            ArrayList<Parqueo> listaclientes=ArrayList_Parqueo.listaclientes;
             FileOutputStream fichero=new FileOutputStream("clientes.dat");
             ObjectOutputStream escritura_fichero=new ObjectOutputStream(fichero);
             escritura_fichero.writeObject(listaclientes);
@@ -169,13 +154,12 @@ public class Interfaz_AñadirCliente extends javax.swing.JFrame {
     
     private void botonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarClienteActionPerformed
         if(!(campoNombre.getText().isEmpty()||campoApellidos.getText().isEmpty()||campoDNI.getText().isEmpty())){
-            if(!(clienteactual.Vehiculo==null))
+            if(!(ArrayList_Parqueo.clienteactual.Vehiculo==null))
                 try{
-                clienteactual.setNombre(campoNombre.getText());
-                clienteactual.setApellido(campoApellidos.getText());
-                clienteactual.setDni(Integer.parseInt(campoDNI.getText()));
-                Parqueo parqueoactual=new Parqueo(listaclientes.size(),clienteactual);
-                listaclientes.add(parqueoactual);
+                ArrayList_Parqueo.clienteactual.setNombre(campoNombre.getText());
+                ArrayList_Parqueo.clienteactual.setApellido(campoApellidos.getText());
+                ArrayList_Parqueo.clienteactual.setDni(Integer.parseInt(campoDNI.getText()));
+                ArrayList_Parqueo.Nuevo_Cliente_Parqueo(ArrayList_Parqueo.clienteactual);
                 escribirListaClientes();
                 new Menú().setVisible(true);
                 dispose();

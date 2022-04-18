@@ -4,6 +4,8 @@
  */
 package Parqueadero.Menu;
 import Parqueadero.Menu.*;
+import Parquedero.Clases.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Axel
@@ -110,10 +112,20 @@ public class Interfaz_ID_para_Editar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        if(campoID.getText().isEmpty())
-        //Interfaz_EditarCliente nuevo=new Interfaz_EditarCliente();
-        //nuevo.setVisible(true);
-        dispose();
+        if(!campoID.getText().isEmpty()){
+            try{
+                ArrayList_Parqueo.clienteactual=ArrayList_Parqueo.get_Cliente_Parqueo(Integer.parseInt(campoID.getText()));
+                Interfaz_EditarCliente nuevo=new Interfaz_EditarCliente();
+                nuevo.setVisible(true);
+                dispose();
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Ingrese un ID valido!");
+            }catch(IndexOutOfBoundsException ex){
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese un ID valido!");
+        }
         //obtendra el id del la caja de texto 
         //el cual buscara en el array, una vez que lo encuentre
         //habilitara la edicion del objeto Parqueo
