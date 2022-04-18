@@ -4,24 +4,25 @@
  */
 package Parquedero.Clases;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Axel
  */
-public class Parqueo {
+public class Parqueo implements Serializable{
     private int id;
     private Date HoraDeEntrada;
     private long cont1,cont2;
     private Date HoraDeSalida;
-    private Cliente propietario;
+    private Cliente propietarioDelVehiculo;
     
-    public Parqueo(int id,Cliente propietario){
+    public Parqueo(int id , Cliente propietario){
         HoraDeEntrada=new Date();
         cont1=System.currentTimeMillis();
         this.id=id;
-        this.propietario=propietario;
+        this.propietarioDelVehiculo=propietario;
     }
 
     public void setId(int id) {
@@ -29,7 +30,7 @@ public class Parqueo {
     }
 
     public void setPropietario(Cliente propietario) {
-        this.propietario = propietario;
+        this.propietarioDelVehiculo = propietario;
     }
 
     public int getId() {
@@ -45,7 +46,7 @@ public class Parqueo {
     }
 
     public Cliente getPropietario() {
-        return propietario;
+        return propietarioDelVehiculo;
     }
     
     public int getTiempoTotal(){
