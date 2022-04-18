@@ -19,7 +19,7 @@ public class InterfazLista extends javax.swing.JFrame {
      */
     public InterfazLista() {
         initComponents();
-        String [] titulos = new String [] {"ID","Nombre","Apellido","Dni","Placa","T. Vehiculo"};//,"H. Entrada","H. Salida"};
+        String [] titulos = new String [] {"ID","Nombre","Apellido","Dni","Placa","T. Vehiculo","H. Entrada","H. Salida"};
         modelo = new DefaultTableModel(null, titulos);
         jTable1.setModel(modelo);
         llenarTabla();
@@ -30,7 +30,8 @@ public class InterfazLista extends javax.swing.JFrame {
         for (Parqueo listacliente : ArrayList_Parqueo.listaclientes) {
             modelo.addRow(new Object[]{
                 listacliente.getId(), listacliente.getPropietario().getNombre(), listacliente.getPropietario().getApellido(), 
-                listacliente.getPropietario().getDni(), listacliente.getPropietario().Vehiculo.getplaca(), listacliente.getPropietario().Vehiculo.gettipoVehiculo() //listacliente.getHoraDeEntrada(), listacliente.getHoraDeSalida()
+                listacliente.getPropietario().getDni(), listacliente.getPropietario().Vehiculo.getplaca(), 
+                listacliente.getPropietario().Vehiculo.gettipoVehiculo(), listacliente.getHoraDeEntrada(), listacliente.getHoraDeSalida()
             });
         }
     }
