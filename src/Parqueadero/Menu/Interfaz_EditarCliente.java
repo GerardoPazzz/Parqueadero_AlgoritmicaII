@@ -4,25 +4,26 @@
  */
 package Parqueadero.Menu;
 
-import Parquedero.Clases.Cliente;
-import Parquedero.Clases.FondoPanel;
-import Parquedero.Clases.Parqueo;
+import Parquedero.Clases.*;
 import java.util.ArrayList;
-
+import java.io.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Axel
  */
 public class Interfaz_EditarCliente extends javax.swing.JFrame {
-
-   FondoPanel fondo2=new FondoPanel();
-   ArrayList<Parqueo> listaclientes2=new ArrayList<>();   
-    public static Cliente clienteeditado;
+    
+    ArrayList<Parqueo> listaclientes;   //Almacena la lista de clientes hasta ahora
+    public static Cliente clienteactual; //Almacena los datos del cliente del registro actual
+    public static int id;
+    FondoPanel fondo2=new FondoPanel();
     public Interfaz_EditarCliente() {
         fondo2.setParURL("/Parqueadero/imagenes/EditarCliente.jpg");
         this.setContentPane(fondo2);
-     
         initComponents();
+        listaclientes=new ArrayList<>();
+        leerListaClientes();
     }
 
     /**
@@ -34,23 +35,23 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
+        botonEditarVehiculo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        campoNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        campoApellidos = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        campoDNI = new javax.swing.JTextField();
+        botonRegresar = new javax.swing.JButton();
+        botonGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton2.setText("Editar Vehiculo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonEditarVehiculo.setText("Editar Vehiculo");
+        botonEditarVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonEditarVehiculoActionPerformed(evt);
             }
         });
 
@@ -71,20 +72,20 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(51, 255, 204));
         jLabel4.setText("DNI:");
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 255));
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(153, 51, 255));
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonRegresar.setBackground(new java.awt.Color(0, 255, 255));
+        botonRegresar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        botonRegresar.setForeground(new java.awt.Color(153, 51, 255));
+        botonRegresar.setText("Regresar");
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonRegresarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Guardar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonGuardar.setText("Guardar");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonGuardarActionPerformed(evt);
             }
         });
 
@@ -106,15 +107,15 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                            .addComponent(botonEditarVehiculo)
+                            .addComponent(campoNombre)
+                            .addComponent(campoApellidos)
+                            .addComponent(campoDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
                         .addGap(45, 45, 45))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(botonRegresar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(botonGuardar)
                         .addGap(23, 23, 23))))
         );
         layout.setVerticalGroup(
@@ -125,42 +126,63 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(botonEditarVehiculo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(botonRegresar)
+                    .addComponent(botonGuardar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    
+    public void leerListaClientes(){
+        try {
+            FileInputStream fichero=new FileInputStream("clientes.dat");
+            ObjectInputStream lectura_fichero=new ObjectInputStream(fichero);
+            listaclientes=(ArrayList<Parqueo>)lectura_fichero.readObject();  
+            lectura_fichero.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public void escribirListaClientes(){
+        try {
+            FileOutputStream fichero=new FileOutputStream("clientes.dat");
+            ObjectOutputStream escritura_fichero=new ObjectOutputStream(fichero);
+            escritura_fichero.writeObject(listaclientes);
+            escritura_fichero.close();
+            JOptionPane.showMessageDialog(null, "Cliente registrado exitosamente!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    private void botonEditarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarVehiculoActionPerformed
         InterfazEditarVehiculo vent4= new InterfazEditarVehiculo();
         vent4.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonEditarVehiculoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Menú nuevo= new Menú();
-        nuevo.setVisible(true);
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
+        new Menú().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonRegresarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,15 +223,15 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botonEditarVehiculo;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonRegresar;
+    private javax.swing.JTextField campoApellidos;
+    private javax.swing.JTextField campoDNI;
+    private javax.swing.JTextField campoNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
