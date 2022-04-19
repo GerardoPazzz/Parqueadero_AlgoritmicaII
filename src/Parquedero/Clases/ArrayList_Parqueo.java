@@ -15,19 +15,13 @@ public class ArrayList_Parqueo {
     public static Cliente clienteactual=new Cliente();
     
     public static void Nuevo_Cliente_Parqueo(Cliente nuevocliente){
-        int newid;
-        try{
-            newid=listaclientes.get(listaclientes.size()-1).getId()+1;
-        }catch(IndexOutOfBoundsException ex){
-            newid=0;
-        }
-        Parqueo parqueo= new Parqueo(newid, nuevocliente);
+        Parqueo parqueo= new Parqueo(listaclientes.size(), nuevocliente);
         listaclientes.add(parqueo);
     }
     
     public static Cliente get_Cliente_Parqueo(int id){
         for(Parqueo parqueo: listaclientes){
-            if(parqueo.getId()==id)
+            if(parqueo.getId()==id&&!parqueo.isEliminado())
                 return parqueo.getPropietario();
         }
         //Si no encuentra el parqueo con el id elegido, lanza un error que es recogido por la Interfaz_ID_para_editar
@@ -37,7 +31,8 @@ public class ArrayList_Parqueo {
     public static int get_Indice_Parqueo(String placa){
         for (int i = 0; i < listaclientes.size(); i++) {
             if(listaclientes.get(i).getPropietario().getvehiculo().getplaca().equals(placa))
-                return i;
+                if(!listaclientes.get(i).isEliminado())
+                    return i;
         }
         return -1;
     }

@@ -7,6 +7,7 @@ import Parquedero.Clases.*;
 import javax.swing.JOptionPane;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author USER
@@ -147,7 +148,8 @@ public class Interfaz_Retirar_Vehiculo extends javax.swing.JFrame {
         if(!campoPlaca.getText().isEmpty()){
             int id_retiro=ArrayList_Parqueo.get_Indice_Parqueo(campoPlaca.getText());
             if(id_retiro!=-1){
-                ArrayList_Parqueo.listaclientes.remove(id_retiro);
+                ArrayList_Parqueo.listaclientes.get(id_retiro).setEliminado(true);
+                ArrayList_Parqueo.listaclientes.get(id_retiro).setHoraDeSalida(new Date());
                 escribirListaClientes();
                 JOptionPane.showMessageDialog(null, "El vehiculo se ha retirado!");
             }

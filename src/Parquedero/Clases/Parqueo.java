@@ -17,12 +17,14 @@ public class Parqueo implements Serializable{
     private long cont1,cont2;
     private Date HoraDeSalida;
     private Cliente propietarioDelVehiculo;
+    private boolean eliminado;
     
     public Parqueo(int id , Cliente propietario){
         HoraDeEntrada=new Date();
         cont1=System.currentTimeMillis();
         this.id=id;
         this.propietarioDelVehiculo=propietario;
+        this.eliminado=false;
     }
 
     public void setId(int id) {
@@ -45,14 +47,26 @@ public class Parqueo implements Serializable{
         return HoraDeSalida;
     }
 
+    public void setHoraDeSalida(Date HoraDeSalida) {
+        this.HoraDeSalida = HoraDeSalida;
+    }
+
     public Cliente getPropietario() {
         return propietarioDelVehiculo;
     }
     
     public int getTiempoTotal(){
-        HoraDeSalida=new Date();
+        setHoraDeSalida(new Date());
         cont2=System.currentTimeMillis();
         int x=(int)((cont2-cont1)/3600000);
         return x;
+    }
+
+    public boolean isEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
     }
 }
