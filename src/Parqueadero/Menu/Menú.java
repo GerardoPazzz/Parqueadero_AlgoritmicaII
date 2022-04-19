@@ -27,11 +27,11 @@ public class Menú extends javax.swing.JFrame {
     public Menú() {
         this.setContentPane(fondo);
         initComponents();
-        escalar.EscalarLabel(LabelAñadir, "/Parqueadero/imagenes/icono_añadir_vehiculo.jpg");
-        escalar.EscalarLabel(LabelBuscar, "/Parqueadero/imagenes/icono_lupa2.jpg");
+        escalar.EscalarLabel(LabelAñadir, "/Parqueadero/imagenes/carros.png");
+        escalar.EscalarLabel(LabelBuscar, "/Parqueadero/imagenes/buscar.png");
         escalar.EscalarLabel(LabelEditar, "/Parqueadero/imagenes/icono_editar.png");
-        escalar.EscalarLabel(LabelLista, "/Parqueadero/imagenes/icono_registro.png");
-        escalar.EscalarLabel(LabelRetirar, "/Parqueadero/imagenes/icono_carro_saliendo.jpg");
+        escalar.EscalarLabel(LabelLista, "/Parqueadero/imagenes/nota.png");
+        escalar.EscalarLabel(LabelRetirar, "/Parqueadero/imagenes/carro-deportivo.png");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         leerListaClientes();

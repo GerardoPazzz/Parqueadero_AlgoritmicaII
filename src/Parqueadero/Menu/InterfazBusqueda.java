@@ -17,8 +17,9 @@ import javax.swing.JLabel;
  */
 public class InterfazBusqueda extends javax.swing.JFrame {
     AjustarImagen escalar=new AjustarImagen();
-    FondoPanel fondo2= new FondoPanel("/Parqueadero/imagenes/interrogacion.jpg");
+    FondoPanel fondo2= new FondoPanel();
     public InterfazBusqueda() {
+        fondo2.setParURL("/Parqueadero/imagenes/interrogacion.jpg");
         this.setContentPane(fondo2);
         initComponents();          
         escalar.EscalarLabel(label_busqueda, "/Parqueadero/imagenes/busqueda_imagen2.jpg");
@@ -35,17 +36,17 @@ public class InterfazBusqueda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new FondoPanel();
+        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         label_busqueda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setOpaque(false);
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton1.setText("Buscar por DNI");
@@ -69,7 +70,6 @@ public class InterfazBusqueda extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 170, 40));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 155, -1, 35));
 
         jButton3.setText("Regresar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +156,6 @@ public class InterfazBusqueda extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_busqueda;
     // End of variables declaration//GEN-END:variables

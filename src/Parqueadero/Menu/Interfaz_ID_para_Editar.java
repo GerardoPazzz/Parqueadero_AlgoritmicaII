@@ -12,10 +12,10 @@ import javax.swing.JOptionPane;
  */
 public class Interfaz_ID_para_Editar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
+    FondoPanel fondo=new FondoPanel();
     public Interfaz_ID_para_Editar() {
+        fondo.setParURL("/Parqueadero/imagenes/ingresar_id.jpg");
+        this.setContentPane(fondo);
         initComponents();
     }
 
@@ -37,11 +37,16 @@ public class Interfaz_ID_para_Editar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setOpaque(false);
+
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText(" ID del Cliente");
 
+        jLabel2.setBackground(new java.awt.Color(255, 0, 51));
+        jLabel2.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText(" ID del Cliente: ");
 
         botonAceptar.setText("Aceptar");

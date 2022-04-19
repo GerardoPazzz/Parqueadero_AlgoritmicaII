@@ -16,7 +16,7 @@ public class Interfaz_Cliente_Vehiculo extends javax.swing.JFrame {
    FondoPanel fondo5=new FondoPanel();
    
     public Interfaz_Cliente_Vehiculo() {
-        fondo5.setParURL("/Parqueadero/imagenes/carro_imagen.jpg");
+        fondo5.setParURL("/Parqueadero/imagenes/agregar_vehiculo.jpg");
         setContentPane(fondo5);
         initComponents();
     }
@@ -30,7 +30,7 @@ public class Interfaz_Cliente_Vehiculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new FondoPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         campoPlaca = new javax.swing.JTextField();
@@ -40,6 +40,8 @@ public class Interfaz_Cliente_Vehiculo extends javax.swing.JFrame {
         campoTipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));

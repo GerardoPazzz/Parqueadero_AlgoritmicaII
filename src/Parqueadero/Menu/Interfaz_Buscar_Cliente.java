@@ -4,16 +4,18 @@
  */
 package Parqueadero.Menu;
 
+import Parquedero.Clases.FondoPanel;
+
 /**
  *
  * @author Axel
  */
 public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Interfaz_Buscar_Cliente
-     */
+   FondoPanel fondo=new FondoPanel();
     public Interfaz_Buscar_Cliente() {
+        fondo.setParURL("/Parqueadero/imagenes/identificacion.jpg");
+        this.setContentPane(fondo);
         initComponents();
     }
 
@@ -34,6 +36,8 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setOpaque(false);
 
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
