@@ -36,8 +36,8 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonRegresar = new javax.swing.JButton();
+        botonBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         CampoDNI = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -46,17 +46,17 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
 
-        jButton2.setText("Regresar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonRegresar.setText("Regresar");
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonRegresarActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonBuscarActionPerformed(evt);
             }
         });
 
@@ -80,11 +80,11 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
                                 .addComponent(jLabel2))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton2)))
+                                .addComponent(botonRegresar)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(CampoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)))
+                            .addComponent(botonBuscar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jLabel1)))
@@ -101,8 +101,8 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
                     .addComponent(CampoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(botonRegresar)
+                    .addComponent(botonBuscar))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -120,36 +120,38 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
         InterfazBusqueda nuevo = new InterfazBusqueda();
         nuevo.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonRegresarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         int i = 1;
         int j = 1;
         int id;
         for (Parqueo parqueo : ArrayList_Parqueo.listaclientes) {
-            if (parqueo.getPropietario().getDni() == Long.parseLong(CampoDNI.getText())) {
-                id = parqueo.getId();
-                ArrayList_Parqueo.clienteactual = ArrayList_Parqueo.get_Cliente_Parqueo(id);
-                Encontrado b = new Encontrado();
-                b.setVisible(true);
-                this.setVisible(false);
-                j = 0;
-
+            //Utilizamos un bloque try catch para verificar si se ha ingresado un dni valido
+            try{
+                if (parqueo.getPropietario().getDni() == Long.parseLong(CampoDNI.getText())) {
+                if(!parqueo.isEliminado()){
+                    id = parqueo.getId();
+                    ArrayList_Parqueo.clienteactual = ArrayList_Parqueo.get_Cliente_Parqueo(id);
+                    Encontrado b = new Encontrado();
+                    b.setVisible(true);
+                    j = 0;
+                    }
+                }
+            }catch(Exception e){
             }
         }
-
         if ((i * j) > 0) {
             JOptionPane.showMessageDialog(null, "Ingrese un DNI valido!");
-            Interfaz_Buscar_Cliente again = new Interfaz_Buscar_Cliente();
+            InterfazBusqueda again = new InterfazBusqueda();
             again.setVisible(true);
-            dispose();
         }
         dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,8 +191,8 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CampoDNI;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
