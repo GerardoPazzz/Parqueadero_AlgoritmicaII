@@ -55,10 +55,9 @@ public class Parqueo implements Serializable{
         return propietarioDelVehiculo;
     }
     
-    public int getTiempoTotal(){
-        setHoraDeSalida(new Date());
+    public double getTiempoTotal(){
         cont2=System.currentTimeMillis();
-        int x=(int)((cont2-cont1)/3600000);
+        double x=((cont2-cont1)/3600000f);
         return x;
     }
 

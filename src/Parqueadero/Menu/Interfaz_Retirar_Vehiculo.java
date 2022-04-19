@@ -18,6 +18,8 @@ public class Interfaz_Retirar_Vehiculo extends javax.swing.JFrame {
     
      */
     FondoPanel fondo=new FondoPanel();
+    private final float tarifaxhora=2.5f;
+    
     public Interfaz_Retirar_Vehiculo() {
         fondo.setParURL("/Parqueadero/imagenes/retirar_vehiculo.jpg");
         this.setContentPane(fondo);
@@ -149,10 +151,22 @@ public class Interfaz_Retirar_Vehiculo extends javax.swing.JFrame {
         if(!campoPlaca.getText().isEmpty()){
             int id_retiro=ArrayList_Parqueo.get_Indice_Parqueo(campoPlaca.getText());
             if(id_retiro!=-1){
-                ArrayList_Parqueo.listaclientes.get(id_retiro).setEliminado(true);
-                ArrayList_Parqueo.listaclientes.get(id_retiro).setHoraDeSalida(new Date());
+                Parqueo cliente_retirado=ArrayList_Parqueo.listaclientes.get(id_retiro);
+                cliente_retirado.setEliminado(true);
+                cliente_retirado.setHoraDeSalida(new Date());
+                String recibo=String.format("Nombre: %s\nApellidos: %s\nPlaca: %s\nHora de entrada: %s\n"
+                        + "Hora de Salida: %s\nMonto a Pagar: %5.3f$"
+                        ,cliente_retirado.getPropietario().getNombre(),
+                        cliente_retirado.getPropietario().getApellido(),
+                        cliente_retirado.getPropietario().getvehiculo().getplaca(),
+                        cliente_retirado.getHoraDeEntrada().toString(),
+                        cliente_retirado.getHoraDeSalida().toString(),
+                        cliente_retirado.getTiempoTotal()*tarifaxhora);
                 escribirListaClientes();
-                JOptionPane.showMessageDialog(null, "El vehiculo se ha retirado!");
+                //JOptionPane.showMessageDialog(null, "No se ha encontrado el vehiculo con la placa ingresada!");
+                JOptionPane.showConfirmDialog(null, recibo,
+                "Retirar Vehiculo", JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
             }
             else{
                 JOptionPane.showMessageDialog(null, "No se ha encontrado el vehiculo con la placa ingresada!");
