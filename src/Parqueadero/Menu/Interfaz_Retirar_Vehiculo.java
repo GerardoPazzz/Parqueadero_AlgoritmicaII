@@ -22,6 +22,7 @@ public class Interfaz_Retirar_Vehiculo extends javax.swing.JFrame {
         fondo.setParURL("/Parqueadero/imagenes/retirar_vehiculo.jpg");
         this.setContentPane(fondo);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

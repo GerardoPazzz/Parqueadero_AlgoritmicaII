@@ -19,10 +19,12 @@ public class InterfazLista extends javax.swing.JFrame {
      */
     public InterfazLista() {
         initComponents();
+        
         String [] titulos = new String [] {"ID","Nombre","Apellido","Dni","Placa","T. Vehiculo","H. Entrada","H. Salida"};
         modelo = new DefaultTableModel(null, titulos);
         jTable1.setModel(modelo);
         llenarTabla();
+        this.setLocationRelativeTo(null);
     }
     
     

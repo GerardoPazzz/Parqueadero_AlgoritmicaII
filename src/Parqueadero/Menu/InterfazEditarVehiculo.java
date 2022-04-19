@@ -15,11 +15,13 @@ public class InterfazEditarVehiculo extends javax.swing.JFrame {
 
     FondoPanel fondo4=new FondoPanel();
     public InterfazEditarVehiculo() {
+        
         fondo4.setParURL("/Parqueadero/imagenes/coleccion_de_autos.jpg");
         setContentPane(fondo4);
-        initComponents();
+        initComponents();        
         campoPlaca.setText(ArrayList_Parqueo.clienteactual.getvehiculo().getplaca());
         campoTipo.setText(ArrayList_Parqueo.clienteactual.getvehiculo().gettipoVehiculo());
+        this.setLocationRelativeTo(null);
     }
 
     /**

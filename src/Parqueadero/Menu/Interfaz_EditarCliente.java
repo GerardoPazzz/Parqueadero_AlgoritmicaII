@@ -16,12 +16,14 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
     
     FondoPanel fondo2=new FondoPanel();
     public Interfaz_EditarCliente() {
+        
         fondo2.setParURL("/Parqueadero/imagenes/EditarCliente.jpg");
         this.setContentPane(fondo2);
         initComponents();
         campoNombre.setText(ArrayList_Parqueo.clienteactual.getNombre());
         campoApellidos.setText(ArrayList_Parqueo.clienteactual.getApellido());
         campoDNI.setText(Long.toString(ArrayList_Parqueo.clienteactual.getDni()));
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -14,9 +14,11 @@ public class Interfaz_ID_para_Editar extends javax.swing.JFrame {
 
     FondoPanel fondo=new FondoPanel();
     public Interfaz_ID_para_Editar() {
+        
         fondo.setParURL("/Parqueadero/imagenes/ingresar_id.jpg");
         this.setContentPane(fondo);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

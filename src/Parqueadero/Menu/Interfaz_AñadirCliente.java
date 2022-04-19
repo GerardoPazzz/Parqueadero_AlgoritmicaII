@@ -18,10 +18,11 @@ public class Interfaz_AñadirCliente extends javax.swing.JFrame {
     
     FondoPanel panel3= new FondoPanel();
     public Interfaz_AñadirCliente() {
+        
         panel3.setParURL("/Parqueadero/imagenes/siluetas.jpg");
-        setContentPane(panel3);
-        setLocationRelativeTo(null);
+        setContentPane(panel3);        
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

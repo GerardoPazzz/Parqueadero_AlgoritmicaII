@@ -16,9 +16,11 @@ public class Interfaz_Cliente_Vehiculo extends javax.swing.JFrame {
    FondoPanel fondo5=new FondoPanel();
    
     public Interfaz_Cliente_Vehiculo() {
+        
         fondo5.setParURL("/Parqueadero/imagenes/agregar_vehiculo.jpg");
         setContentPane(fondo5);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

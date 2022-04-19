@@ -14,9 +14,11 @@ public class Interfaz_Buscar_Vehiculo extends javax.swing.JFrame {
 
     FondoPanel fondo=new FondoPanel();
     public Interfaz_Buscar_Vehiculo() {
+     
      fondo.setParURL("/Parqueadero/imagenes/placa_auto.jpg");
      this.setContentPane(fondo);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

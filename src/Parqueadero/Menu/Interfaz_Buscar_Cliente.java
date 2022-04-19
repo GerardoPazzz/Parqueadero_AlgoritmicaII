@@ -13,10 +13,11 @@ import Parquedero.Clases.FondoPanel;
 public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
 
    FondoPanel fondo=new FondoPanel();
-    public Interfaz_Buscar_Cliente() {
+    public Interfaz_Buscar_Cliente() {        
         fondo.setParURL("/Parqueadero/imagenes/identificacion.jpg");
         this.setContentPane(fondo);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
