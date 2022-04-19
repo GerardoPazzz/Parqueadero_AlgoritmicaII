@@ -4,7 +4,12 @@
  */
 package Parqueadero.Menu;
 
+import Parquedero.Clases.ArrayList_Parqueo;
 import Parquedero.Clases.FondoPanel;
+import Parquedero.Clases.Parqueo;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
 
 /**
  *
@@ -12,8 +17,9 @@ import Parquedero.Clases.FondoPanel;
  */
 public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
 
-   FondoPanel fondo=new FondoPanel();
-    public Interfaz_Buscar_Cliente() {        
+    FondoPanel fondo = new FondoPanel();
+
+    public Interfaz_Buscar_Cliente() {
         fondo.setParURL("/Parqueadero/imagenes/identificacion.jpg");
         this.setContentPane(fondo);
         initComponents();
@@ -33,7 +39,7 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        CampoDNI = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,6 +54,11 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
         });
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Ingrese el DNI:");
 
@@ -72,7 +83,7 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
                                 .addComponent(jButton2)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CampoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
@@ -87,7 +98,7 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CampoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -110,10 +121,35 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      InterfazBusqueda nuevo= new InterfazBusqueda();
+        InterfazBusqueda nuevo = new InterfazBusqueda();
         nuevo.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int i = 1;
+        int j = 1;
+        int id;
+        for (Parqueo parqueo : ArrayList_Parqueo.listaclientes) {
+            if (parqueo.getPropietario().getDni() == Long.parseLong(CampoDNI.getText())) {
+                id = parqueo.getId();
+                ArrayList_Parqueo.clienteactual = ArrayList_Parqueo.get_Cliente_Parqueo(id);
+                Encontrado b = new Encontrado();
+                b.setVisible(true);
+                this.setVisible(false);
+                j = 0;
+
+            }
+        }
+
+        if ((i * j) > 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese un DNI valido!");
+            Interfaz_Buscar_Cliente again = new Interfaz_Buscar_Cliente();
+            again.setVisible(true);
+            dispose();
+        }
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,11 +188,11 @@ public class Interfaz_Buscar_Cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoDNI;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

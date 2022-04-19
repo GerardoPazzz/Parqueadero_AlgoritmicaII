@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Parqueadero.Menu;
-
+import Parquedero.Clases.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Yeyson Cano Carbajo
@@ -16,6 +21,11 @@ public class Encontrado extends javax.swing.JFrame {
     public Encontrado() {
         initComponents();
         this.setLocationRelativeTo(null);
+        CampoNombre.setText(ArrayList_Parqueo.clienteactual.getNombre());
+        CampoApellido.setText(ArrayList_Parqueo.clienteactual.getApellido());
+        CampoDni.setText(Long.toString(ArrayList_Parqueo.clienteactual.getDni()));
+        CampoV1.setText(String.valueOf(ArrayList_Parqueo.clienteactual.Vehiculo.getplaca()));
+        CampoV2.setText(String.valueOf(ArrayList_Parqueo.clienteactual.Vehiculo.gettipoVehiculo()));
     }
 
     /**
@@ -32,6 +42,12 @@ public class Encontrado extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        CampoDni = new javax.swing.JLabel();
+        CampoNombre = new javax.swing.JLabel();
+        CampoApellido = new javax.swing.JLabel();
+        CampoV1 = new javax.swing.JLabel();
+        CampoV2 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,7 +82,26 @@ public class Encontrado extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setText("VEHÍCULO:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+
+        jLabel5.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel5.setText("PLACA");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        CampoDni.setText("jLabel6");
+        getContentPane().add(CampoDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+
+        CampoNombre.setText("jLabel7");
+        getContentPane().add(CampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
+
+        CampoApellido.setText("jLabel8");
+        getContentPane().add(CampoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
+
+        CampoV1.setText("jLabel9");
+        getContentPane().add(CampoV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
+
+        CampoV2.setText("jLabel10");
+        getContentPane().add(CampoV2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Parqueadero/imagenes/fondoEncontrado.jpg")));
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 450));
@@ -116,11 +151,17 @@ public class Encontrado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CampoApellido;
+    private javax.swing.JLabel CampoDni;
+    private javax.swing.JLabel CampoNombre;
+    private javax.swing.JLabel CampoV1;
+    private javax.swing.JLabel CampoV2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelFondo;
     // End of variables declaration//GEN-END:variables
 }

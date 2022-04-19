@@ -5,6 +5,12 @@
 package Parqueadero.Menu;
 
 import Parquedero.Clases.FondoPanel;
+import Parquedero.Clases.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +18,12 @@ import Parquedero.Clases.FondoPanel;
  */
 public class Interfaz_Buscar_Vehiculo extends javax.swing.JFrame {
 
-    FondoPanel fondo=new FondoPanel();
+    FondoPanel fondo = new FondoPanel();
+
     public Interfaz_Buscar_Vehiculo() {
-     
-     fondo.setParURL("/Parqueadero/imagenes/placa_auto.jpg");
-     this.setContentPane(fondo);
+
+        fondo.setParURL("/Parqueadero/imagenes/placa_auto.jpg");
+        this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -35,7 +42,7 @@ public class Interfaz_Buscar_Vehiculo extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        CampoPlaca = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,8 +67,13 @@ public class Interfaz_Buscar_Vehiculo extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 95, -1, -1));
 
         jButton2.setText("Buscar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 92, 305, -1));
+        jPanel1.add(CampoPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 92, 305, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,10 +90,33 @@ public class Interfaz_Buscar_Vehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        InterfazBusqueda nuevo= new InterfazBusqueda();
+        InterfazBusqueda nuevo = new InterfazBusqueda();
         nuevo.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int m = 1;
+        int n = 1;
+        int id;
+        for (Parqueo parqueo : ArrayList_Parqueo.listaclientes) {
+            if (parqueo.getPropietario().getvehiculo().getplaca().equals(CampoPlaca.getText())) {
+                id = parqueo.getId();
+                ArrayList_Parqueo.clienteactual = ArrayList_Parqueo.get_Cliente_Parqueo(id);
+                Encontrado b = new Encontrado();
+                b.setVisible(true);
+                this.setVisible(false);
+                n = 0;
+            }
+        }
+        if ((m * n) > 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese una Placa valido!");
+            Interfaz_Buscar_Cliente again = new Interfaz_Buscar_Cliente();
+            again.setVisible(true);
+            dispose();
+        }
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,11 +155,11 @@ public class Interfaz_Buscar_Vehiculo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoPlaca;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
