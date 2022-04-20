@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Axel
+ * @author Sebastian
  */
 public class Interfaz_AñadirCliente extends javax.swing.JFrame {
     

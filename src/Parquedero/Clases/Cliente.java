@@ -23,9 +23,6 @@ public class Cliente extends Persona implements Serializable {
         super(nombre, apellido);
     }
 
-    public void setvehiculo(String Vehiculo) {
-    }
-
     public void setVehiculo(vehiculo vehiculo) {
         this.Vehiculo = vehiculo;
     }

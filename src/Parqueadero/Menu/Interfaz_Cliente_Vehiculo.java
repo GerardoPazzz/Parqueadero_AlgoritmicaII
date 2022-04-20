@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Axel
+ * @author Sebastian
  */
 public class Interfaz_Cliente_Vehiculo extends javax.swing.JFrame {
 

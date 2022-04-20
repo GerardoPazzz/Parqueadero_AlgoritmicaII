@@ -177,7 +177,6 @@ public class Interfaz_EditarCliente extends javax.swing.JFrame {
                 ArrayList_Parqueo.clienteactual.setNombre(campoNombre.getText());
                 ArrayList_Parqueo.clienteactual.setApellido(campoApellidos.getText());
                 ArrayList_Parqueo.clienteactual.setDni(Integer.parseInt(campoDNI.getText()));
-                ArrayList_Parqueo.Nuevo_Cliente_Parqueo(ArrayList_Parqueo.clienteactual);
                 escribirListaClientes();
                 new Menú().setVisible(true);
                 dispose();

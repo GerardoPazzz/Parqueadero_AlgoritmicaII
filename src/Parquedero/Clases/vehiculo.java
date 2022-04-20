@@ -8,7 +8,7 @@ public class vehiculo implements Serializable{
     public vehiculo(String placa,String tipoVehiculo){
         this.placa=placa;
         this.tipoVehiculo=tipoVehiculo;
-    };
+    }
 
     public void setplaca(String placa) {
         this.placa = placa;
